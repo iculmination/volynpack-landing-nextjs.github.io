@@ -1,0 +1,78 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"); */
+
+:root {
+  --primary-color: #ede8e2;
+  --secondary-color: #8b9d83;
+}
+
+/* ebe2d9 */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* font-family: "Montserrat", sans-serif; */
+  overflow-x: hidden;
+  background-color: var(--primary-color);
+}
+
+.bg-main-color {
+  background-color: var(--primary-color);
+}
+
+.font-main {
+  font-family: "Montserrat", sans-serif;
+}
+
+.shadow-main-bottom {
+  /* box-shadow: 0px 20px 10px var(--primary-color); */
+  box-shadow: 0px 2px 5px gray;
+  background-color: rgba(237, 232, 226, 0.7);
+
+  backdrop-filter: blur(6px);
+}
+
+.shadow-main-color-bottom {
+  box-shadow: 0px 20px 10px var(--primary-color);
+}
+
+.border-secondary-img {
+  border: 3px solid var(--secondary-color);
+}
+
+.bgc-main {
+  background-color: var(--primary-color);
+}
+
+.bgc-secondary {
+  background-color: var(--secondary-color);
+}
+
+.text-main-color {
+  color: var(--primary-color);
+}
+
+.text-secondary-color {
+  color: var(--secondary-color);
+}
+
+.bg-img-bags {
+  background: url("/bg-bags.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
