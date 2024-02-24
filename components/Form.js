@@ -45,7 +45,7 @@ const Form = () => {
               htmlFor="name"
               className="block text-sm font-medium text-gray-600"
             >
-              Ім'я
+              Ім&apos;я
             </label>
             <input
               type="text"
