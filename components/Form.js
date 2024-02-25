@@ -34,7 +34,7 @@ const Form = () => {
         <h2 className="text-3xl md:text-4xl mb-4">Оформлення замовлення</h2>
         <p className="text-base mt-2 mb-8">Бажаєте зробити замовлення?</p>
         <p className="text-base mt-2 mb-8">
-          Залиште свої контактні дані, і наш менеджер зв'яжеться з вами!
+          Залиште свої контактні дані, і наш менеджер зв{`'`}яжеться з вами!
         </p>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -45,7 +45,7 @@ const Form = () => {
               htmlFor="name"
               className="block text-sm font-medium text-gray-600"
             >
-              Ім&apos;я
+              Ім{`'`}я
             </label>
             <input
               type="text"
