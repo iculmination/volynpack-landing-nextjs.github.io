@@ -24,7 +24,7 @@ const Form = () => {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      const res = await fetch("http://localhost:3000/api/customers", {
+      const res = await fetch("https://volynpack-landing-nextjs-github-io.vercel.app/api/customers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
