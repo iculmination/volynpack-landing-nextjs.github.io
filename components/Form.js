@@ -21,8 +21,25 @@ const Form = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    // console.log(data);
+    try {
+      const res = await fetch("http://localhost:3000/api/customers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error("failed to fetch");
+      }
+
+      return res.text();
+    } catch (error) {
+      console.log("error loading db");
+    }
   };
 
   return (

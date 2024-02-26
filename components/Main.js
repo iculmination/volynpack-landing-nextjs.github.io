@@ -1,4 +1,19 @@
+import { MongoClient } from "mongodb";
+
 const Main = () => {
+  const sendCustomerData = async () => {
+    const client = new MongoClient(
+      "mongodb+srv://ovsiichukbohdan:Us3uEcP3pv1qak69@volynpack-customers.r0nxmfg.mongodb.net/"
+    );
+    await client.connect();
+    await client
+      .db('volynpack')
+      .collection("customers")
+      .insertOne({ testField: "AAAAAAAAA" });
+  };
+
+  // sendCustomerData().then(console.log('posted'));
+
   return (
     <div className="bg-main-color w-full gap-6 xl:gap-12 pl-8 md:pl-16 lg:pl-32 pr-8 md:pr-16 lg:pr-32 pt-24 md:pt-32 md:pt-48 pb-8 flex flex-col md:flex-row justify-between items-center md:items-start">
       <div className="text-center md:text-left mb-8 md:mb-0 lg:mt-36">

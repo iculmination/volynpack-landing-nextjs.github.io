@@ -9,6 +9,9 @@ import Form from "../components/Form";
 import Contacts from "../components/Contacts";
 
 export default function Home() {
+
+  
+
   return (
     <main>
       <Header />
@@ -16,8 +19,8 @@ export default function Home() {
       <Services />
       <Offer />
       <Process />
-      <Reviews />
       <About />
+      <Reviews />
       <Form />
       <Contacts />
     </main>
