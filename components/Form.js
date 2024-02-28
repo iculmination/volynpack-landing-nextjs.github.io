@@ -40,34 +40,35 @@ const Form = () => {
     }-${date.getFullYear()}`;
 
     try {
-      const res = await fetch("https://volynpack-landing-nextjs-github-io.vercel.app/api/customers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://volynpack-landing-nextjs-github-io.vercel.app/api/customers",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!res.ok) {
-        openPopup("Не вдалося надіслати. Спробуйте ще раз...");
+        openPopup("Не вдалося надіслати...");
         setSending(false);
         throw new Error("failed to fetch");
       }
 
       setSending(false);
-      openPopup(
-        "Ваші дані успішно надіслано!"
-      );
+      openPopup("Ваші дані успішно надіслані!");
       return res.text();
     } catch (error) {
-      openPopup("Не вдалося надіслати. Спробуйте ще раз...");
+      openPopup("Не вдалося надіслати...");
       setSending(false);
     }
   };
 
   const dynamicStyles = popup
-  ? "fixed top-40 bg-[#e9d9c6] left-1/3 rounded-full w-1/3 h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-10 opacity-100"
-  : "fixed top-40 bg-[#e9d9c6] left-1/3 rounded-full w-1/3 h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-0 opacity-0";
+    ? "fixed p-4 top-10 lg:top-40 bg-[#e9d9c6] lg:left-1/3 rounded-full w-full lg:w-1/3 lg:p-0 min-h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-10 opacity-100"
+    : "fixed p-4 top-10 lg:top-40 bg-[#e9d9c6] lg:left-1/3 rounded-full w-full lg:w-1/3 lg:p-0 min-h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-0 opacity-0";
 
   return (
     <section
@@ -150,7 +151,11 @@ const Form = () => {
           <button
             type="submit"
             disabled={sending}
-            className={sending?"w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base flex transition ease-in-out delay-150 opacity-80 duration-300":"w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"}
+            className={
+              sending
+                ? "w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base flex transition ease-in-out delay-150 opacity-80 duration-300"
+                : "w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+            }
           >
             <p>{sending ? "Надсилаємо..." : "Надіслати"}</p>
           </button>
