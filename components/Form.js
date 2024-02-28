@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -13,6 +14,7 @@ const schema = z.object({
 });
 
 const Form = () => {
+  const [sending, setSending] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,6 +24,7 @@ const Form = () => {
   });
 
   const onSubmit = async (data) => {
+    setSending(true);
     // console.log(data);
     try {
       const res = await fetch("https://volynpack-landing-nextjs-github-io.vercel.app/api/customers", {
@@ -33,12 +36,19 @@ const Form = () => {
       });
 
       if (!res.ok) {
+        alert("Не вдалося надіслати. Спробуйте ще раз...");
+        setSending(false);
         throw new Error("failed to fetch");
       }
 
+      setSending(false);
+      alert(
+        "Ваші дані успішно надіслано! Очікуйте, доки наш менеджер зв'яжеться з вами..."
+      );
       return res.text();
     } catch (error) {
-      console.log("error loading db");
+      alert("Не вдалося надіслати. Спробуйте ще раз...");
+      setSending(false);
     }
   };
 
@@ -111,7 +121,7 @@ const Form = () => {
             type="submit"
             className="w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
           >
-            <p>Надіслати</p>
+            <p>{sending ? "Надсилаємо..." : "Надіслати"}</p>
           </button>
         </form>
       </div>
