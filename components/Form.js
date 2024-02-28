@@ -15,6 +15,15 @@ const schema = z.object({
 
 const Form = () => {
   const [sending, setSending] = useState(false);
+  const [popup, setPopup] = useState(false);
+
+  const openPopup = (string) => {
+    setPopup(string);
+    setTimeout(() => {
+      setPopup(null);
+    }, 3000);
+  };
+
   const {
     register,
     handleSubmit,
@@ -40,27 +49,41 @@ const Form = () => {
       });
 
       if (!res.ok) {
-        alert("Не вдалося надіслати. Спробуйте ще раз...");
+        openPopup("Не вдалося надіслати. Спробуйте ще раз...");
         setSending(false);
         throw new Error("failed to fetch");
       }
 
       setSending(false);
-      alert(
-        "Ваші дані успішно надіслано! Очікуйте, доки наш менеджер зв'яжеться з вами..."
+      openPopup(
+        "Ваші дані успішно надіслано!"
       );
       return res.text();
     } catch (error) {
-      alert("Не вдалося надіслати. Спробуйте ще раз...");
+      openPopup("Не вдалося надіслати. Спробуйте ще раз...");
       setSending(false);
     }
   };
+
+  const dynamicStyles = popup
+  ? "fixed top-40 bg-[#e9d9c6] left-1/3 rounded-full w-1/3 h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-10 opacity-100"
+  : "fixed top-40 bg-[#e9d9c6] left-1/3 rounded-full w-1/3 h-12 items-center flex justify-center shadow-lg transition-all duration-300 translate-y-0 opacity-0";
 
   return (
     <section
       id="form"
       className="flex w-full justify-evenly gap-8 lg:gap-12 items-center bg-main-color pt-32 pb-16 xl:pb-32 pl-4 pr-4 md:pl-32 md:pr-32 lg:pt-56"
     >
+      <div className={dynamicStyles}>
+        <div className="flex text-center items-center">
+          <img
+            src="Tilda_Icons_7cafe_letter.svg"
+            alt=""
+            className="mr-2 w-6 h-6"
+          />
+          <p>{popup}</p>
+        </div>
+      </div>
       <div className="text-gray-800 text-center min-w-1/2">
         <h2 className="text-3xl md:text-4xl mb-4">Оформлення замовлення</h2>
         <p className="text-base mt-2 mb-8">Бажаєте зробити замовлення?</p>
@@ -79,6 +102,7 @@ const Form = () => {
               Ім{`'`}я
             </label>
             <input
+              maxLength="30"
               type="text"
               id="name"
               {...register("name")}
@@ -97,6 +121,7 @@ const Form = () => {
               Контакти (пошта/телефон/месенджер)
             </label>
             <input
+              maxLength="45"
               type="text"
               id="contacts"
               {...register("contacts")}
@@ -115,6 +140,7 @@ const Form = () => {
               Що бажаєте замовити/дізнатись?
             </label>
             <textarea
+              maxLength="112"
               id="comment"
               {...register("comment")}
               className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-primary"
@@ -123,7 +149,8 @@ const Form = () => {
 
           <button
             type="submit"
-            className="w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+            disabled={sending}
+            className={sending?"w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base flex transition ease-in-out delay-150 opacity-80 duration-300":"w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"}
           >
             <p>{sending ? "Надсилаємо..." : "Надіслати"}</p>
           </button>
