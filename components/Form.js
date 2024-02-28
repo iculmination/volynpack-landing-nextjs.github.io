@@ -25,7 +25,11 @@ const Form = () => {
 
   const onSubmit = async (data) => {
     setSending(true);
-    // console.log(data);
+    var date = new Date();
+    data.formattedDate = `${date.getDate()}-${
+      date.getMonth() + 1
+    }-${date.getFullYear()}`;
+
     try {
       const res = await fetch("https://volynpack-landing-nextjs-github-io.vercel.app/api/customers", {
         method: "POST",
