@@ -18,24 +18,25 @@ const Header = () => {
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
-        block: "start", 
+        block: "start",
       });
       closeMobileMenu();
     }
   };
 
   return (
-    <header className="fixed top-0 bg-main-color box-border w-full pl-4 pr-4 pt-4 pb-4 md:pl-32 md:pr-32 md:pt-8 md:pb-8 flex justify-between z-50 text-gray-800 shadow-main-bottom">
+    <header className="fixed top-0 bg-main-color box-border w-full pl-4 pr-4 pt-4 pb-4 md:pl-32 md:pr-32   flex justify-between z-50 text-gray-800 shadow-main-bottom">
       <div className="flex items-center">
         <a
-          href="#test"
+          href="#main"
           className="flex flex-col items-center cursor-pointer"
-          onClick={closeMobileMenu}
+          onClick={()=>scrollToElement('main')}
         >
-          <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">
+          {/* <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">
             VolynPack LOGO
-          </h2>
-          <p className="text-sm md:text-base">Паперові пакети</p>
+          </h2> */}
+          <img src="logo.png" alt="" className=" w-16 lg:w-24 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" />
+          {/* <p className="text-sm md:text-base">Паперові пакети</p> */}
         </a>
       </div>
       <nav className="hidden md:flex justify-between w-12 min-w-96 items-center">

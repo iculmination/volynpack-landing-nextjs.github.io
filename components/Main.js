@@ -11,7 +11,10 @@ const Main = () => {
     }
   };
   return (
-    <div className="bg-main-color w-full gap-6 xl:gap-12 pl-8 md:pl-16 lg:pl-32 pr-8 md:pr-16 lg:pr-32 pt-24 md:pt-32 md:pt-48 pb-8 flex flex-col md:flex-row justify-between items-center md:items-start">
+    <section
+      id="main"
+      className="bg-main-color w-full gap-6 xl:gap-12 pl-8 md:pl-16 lg:pl-32 pr-8 md:pr-16 lg:pr-32 pt-24 md:pt-32 md:pt-48 pb-8 flex flex-col md:flex-row justify-between items-center md:items-start"
+    >
       <div className="text-center md:text-left mb-8 md:mb-0 lg:mt-36">
         <h1 className="text-4xl lg:text-6xl font-bold mt-4 md:mt-0 text-gray-800">
           Виготовляємо <span className="text-secondary-color">якісні</span>{" "}
@@ -22,7 +25,11 @@ const Main = () => {
         </p>
         <div className="flex mt-4 justify-center md:justify-start">
           <div className="w-32 h-12 lg:w-48 lg:h-16 mr-2 lg:mr-12 bgc-secondary rounded-full flex text-white text-base lg:text-xl cursor-pointer text-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-            <a href="#form" onClick={() => scrollToElement("form")} className="w-full">
+            <a
+              href="#form"
+              onClick={() => scrollToElement("form")}
+              className="w-full"
+            >
               Замовити
             </a>
           </div>
@@ -64,7 +71,23 @@ const Main = () => {
           </div>
         </div>
         <p className="mt-2 text-base lg:text-xl text-gray-400 mt-6">
-          Знижка 10% на перше замовлення
+          Менеджери для зв{`'`}язку:
+        </p>
+        <p>
+          <a
+            href="tel:+1234567890"
+            className="mt-2 text-base lg:text-xl text-gray-400 mt-6"
+          >
+            +1234567890
+          </a>
+        </p>
+        <p>
+          <a
+            href="tel:+1234567890"
+            className="mt-2 text-base lg:text-xl text-gray-400 mt-6"
+          >
+            +1234567890
+          </a>
         </p>
       </div>
       <div>
@@ -74,7 +97,7 @@ const Main = () => {
           className="max-w-full border-secondary-img lg:mt-36 xl:mt-0"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

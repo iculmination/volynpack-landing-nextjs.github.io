@@ -40,16 +40,13 @@ const Form = () => {
     }-${date.getFullYear()}`;
 
     try {
-      const res = await fetch(
-        "https://volynpack-landing-nextjs-github-io.vercel.app/api/customers",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const res = await fetch("http://localhost:3000/api/customers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (!res.ok) {
         openPopup("Не вдалося надіслати...");
@@ -154,7 +151,7 @@ const Form = () => {
             className={
               sending
                 ? "w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base flex transition ease-in-out delay-150 opacity-80 duration-300"
-                : "w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+                : "w-full h-16 bgc-secondary rounded-full flex items-center justify-center text-white text-base cursor-pointer flex transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300"
             }
           >
             <p>{sending ? "Надсилаємо..." : "Надіслати"}</p>

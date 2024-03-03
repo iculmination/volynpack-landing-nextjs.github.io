@@ -1,6 +1,9 @@
 const Contacts = () => {
   return (
-    <section className="h-[80vh] lg:h-screen flex items-center justify-center">
+    <section
+      id="contacts"
+      className="h-[80vh] lg:h-screen flex items-center justify-center"
+    >
       <div
         className="bg-cover bg-center relative"
         style={{
@@ -32,21 +35,27 @@ const Contacts = () => {
             Адреса складу: вул. Приклад, м. Приклад
           </p>
           <div className="flex justify-center gap-4 mt-4">
-            <img
-              src="/instagram-white-icon.webp"
-              className="w-7 h-7 cursor-pointer"
-              alt="Instagram"
-            />
-            <img
-              src="/viber-white-icon.webp"
-              className="w-7 h-7 cursor-pointer"
-              alt="Viber"
-            />
-            <img
-              src="/telegram-white-icon.webp"
-              className="w-7 h-7 cursor-pointer"
-              alt="Telegram"
-            />
+            <a href="">
+              <img
+                src="/instagram-white-icon.webp"
+                className="w-7 h-7 cursor-pointer hover:scale-110 transition duration-300"
+                alt="Instagram"
+              />
+            </a>
+            <a href="">
+              <img
+                src="/viber-white-icon.webp"
+                className="w-7 h-7 cursor-pointer hover:scale-110 transition duration-300"
+                alt="Instagram"
+              />
+            </a>
+            <a href="">
+              <img
+                src="/telegram-white-icon.webp"
+                className="w-7 h-7 cursor-pointer hover:scale-110 transition duration-300"
+                alt="Instagram"
+              />
+            </a>
           </div>
           <p className="text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -55,7 +64,6 @@ const Contacts = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
             perspiciatis.
           </p>
-
         </div>
       </div>
     </section>
